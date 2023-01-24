@@ -1,42 +1,50 @@
-﻿@model PatientInformation.Application.Dto.PatientInformationResponse;
-
-
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-
-                @Html.ValidationSummary(true)
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FullName, new { @class = "control-label col-md-2" })
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DiseaseId, new { @class = "control-label col-md-2" })
-                    <div class="col-md-12">
-                        @Html.DropDownListFor(m => m.DiseaseId, (SelectList)ViewBag.Diseases, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Epilepsy, new { @class = "control-label col-md-2" })
-                    <div class="col-md-12">
-                        @Html.DropDownListFor(m => m.Epilepsy,(SelectList) ViewBag.Epilepsy, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-              
-
-                <br />
-                <div class="form-group-sm">
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Create</button>
-                    </div>
-                </div>
-            }
+﻿@model PatientInfrastructure.Application.Dto.PatientInformationRequest
+<h1>Add Patient Information</h1>
+<form asp-controller="Home" asp-action="Create" name="add_patient">
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Disease"></label>
+        <select asp-for="Disease" asp-items="ViewBag.Diseases" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Epilepsy"></label>
+        <select asp-for="Disease" asp-items="ViewBag.Epilepsy" class=" form-control"></select>
+    </div>
+    <div class="form-group">
+        <label>Allergies</label>
+        <div class="row">
+            <div class="col">
+                <select name="AlergiesLeft" asp-items="ViewBag.Allergy" class=" form-control" multiple></select>
+            </div>
+            <div class="col d-flex justify-content-between">
+                <button type="button" class="btn btn-primary " onclick="moveRight('AlergiesLeft','AllergiesDetails');">Add &rarr;  </button>
+                <button type="button" class="btn btn-danger " onclick="moveRight('AllergiesDetails','AlergiesLeft');">&larr; Remove </button>
+            </div>
+            <div class="col">
+                <select asp-for="AllergiesDetails" class=" form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Other NCds</label>
+        <div class="row">
+            <div class="col">
+                <select name="ncdLeft" asp-items="ViewBag.NCD" class=" form-control" multiple></select>
+            </div>
+            <div class="col d-flex justify-content-between">
+                <button type="button" class="btn btn-primary " onclick="moveRight('ncdLeft','NCDsDetails');">Add &rarr;  </button>
+                <button type="button" class="btn btn-danger " onclick="moveRight('NCDsDetails','ncdLeft');">&larr; Remove </button>
+            </div>
+            <div class="col">
+                <select asp-for="NCDsDetails" class=" form-control"></select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <button class="btn btn-success" type="submit">Submit Form</button>
+    </div>
+</form>
