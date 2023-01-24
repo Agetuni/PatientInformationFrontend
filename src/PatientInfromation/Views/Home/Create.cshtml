@@ -1,0 +1,42 @@
+﻿@model PatientInformation.Application.Dto.PatientInformationResponse;
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FullName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiseaseId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(m => m.DiseaseId, (SelectList)ViewBag.Diseases, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Epilepsy, new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(m => m.Epilepsy,(SelectList) ViewBag.Epilepsy, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+              
+
+                <br />
+                <div class="form-group-sm">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Create</button>
+                    </div>
+                </div>
+            }

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PatientInformation.Application.Dto.PatientInformationResponse>
+@{
+    ViewData["Title"] = "Home Page";
+}
+ <a class="btn-primary btn" asp-area="" asp-controller="Home" asp-action="Create">Add Patient</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"># Id</th>
+            <th scope="col">First</th>
+            <th scope="col">Disease</th>
+            <th scope="col">Epilepsy(yes/no)</th>
+            <th scope="col">Allergies</th>
+            <th scope="col">Non-communicable Disease</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <th scope="row">@patient.Id</th>
+                <td>@patient.FullName</td>
+                <td>@patient.Disease.Name</td>
+                <td>@patient.Epilepsy</td>
+                <td>
+                    @{
+                        foreach (var allergies in patient.PatientAllergies)
+                        {
+                            <span class="label label-dab"> [@allergies.Allergy.Name]</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @{
+                        foreach (var ncds in patient.PatientNCDs)
+                        {
+                            <span class="label label-info"> [@ncds.NonCommunicableDisease.Name]</span>
+                        }
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
