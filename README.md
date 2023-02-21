@@ -2,7 +2,7 @@
 
 # 📖 Patient Information  <a name="about-project"></a>
 
-**[Patient Information API]** is MVC application  that can register patient data like NCDs, Diseases, allergies.
+**Patient Information API** is MVC application  that can register patient data like NCDs, Diseases, allergies.
 
 <a href="https://github.com/Agetuni/PatientInformationBackend">Click here to see the Back-END project</a>
 
