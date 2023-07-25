@@ -9,7 +9,7 @@ simple **drag and drop ** web app.
 ## 🛠 Built With <a name="built-with"></a>
  - Html
  - CSS
- -JS
+ - JS
 
 
 <!-- AUTHORS -->
