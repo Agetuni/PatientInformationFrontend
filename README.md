@@ -4,7 +4,7 @@
 
 simple **drag and drop ** web app.
 
-<a href="https://agetuni.github.io/drag_drop/">Click here to see the Back-END project</a>
+<a href="https://agetuni.github.io/drag_drop/">Click here to see the demo </a>
 
 ## 🛠 Built With <a name="built-with"></a>
  - Html
